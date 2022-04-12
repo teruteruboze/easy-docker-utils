@@ -1,2 +1,2 @@
 # easy-docker-utils
-Utility for Docker
+DockerのImageからcontainer立ち上げコマンドが覚えられない人向けのお役立ちツールです。</br>
