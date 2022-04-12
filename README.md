@@ -43,3 +43,6 @@ docker exec -it -u 0 taro_pytorch_classification-image bin/bash
 
 ## TODO
 * attachなどのコマンドも、スクリプトで実行できるようにアップデートする予定
+
+## 注意事項
+* ベースイメージによっては、使い物にならないことがあります
