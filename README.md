@@ -3,7 +3,7 @@ DockerのImageからcontainer立ち上げコマンドが覚えられない人向
 書き換えて使う場合は、Forkかブランチを切ることをおすすめします。
 ```
 git checkout -b hogehoge
-# git push -u origin HEAD
+# git push -u origin HEAD # リモートにブランチを登録しないならやらなくて良い
 ```
 
 ## 使い方
