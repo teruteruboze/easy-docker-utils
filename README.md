@@ -1,5 +1,10 @@
 # easy-docker-utils
 DockerのImageからcontainer立ち上げコマンドが覚えられない人向けのお役立ちツールです。</br>
+書き換えて使う場合は、Forkかブランチを切ることをおすすめします。
+```
+git checkout -b hogehoge
+# git push -u origin HEAD
+```
 
 ## 使い方
 1. create-container.sh に必要事項を入力（以下は例）
