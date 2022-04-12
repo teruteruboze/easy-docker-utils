@@ -14,22 +14,26 @@ PORT="8888" # ポートを使うならポート番号（使わないなら空欄
 BACKGROUND=0 # バックグラウンド実行なら1、そうでなければ0
 ```
 ※上記の部分以外は、書き換えないことを推奨
-2. このリポジトリのディレクトリで、以下のコマンドを実行
+2. requirements.txt にpipで入れたいフレームワーク名を記載（基本的にバージョンも指定するのがセオリーです）
+3. 必要であれば、Dockerfile を改修（例えば、pythonを入れるなど）
+4. このリポジトリのディレクトリで、以下のコマンドを実行
 ```
 bash create-container.sh
 ```
-3. 一度コンテナを抜ける場合は、ctrl+p のあと ctrl+q を押す（もしくはexitと入力しEnterを押す）
-4. 再度コンテナに入るには、以下のコマンドを実行
+これでコンテナが立ち上がり利用可能となります</br>
+
+* 一度コンテナを抜ける場合は、ctrl+p のあと ctrl+q を押す（もしくはexitと入力しEnterを押す）
+* 再度コンテナに入るには、以下のコマンドを実行
 ```
 docker attach taro_pytorch_classification-container
 ```
-5. 一度コンテナからexitした場合は、以下のコマンドで再開可能
+* 一度コンテナからexitした場合は、以下のコマンドで再開可能
 ```
 docker start taro_pytorch_classification-container
 docker attach taro_pytorch_classification-container
 ```
 
-なお、rootでログインしたい場合は、次のコマンドを実行する。
+* なお、rootでログインしたい場合は、次のコマンドを実行する。
 ```
 docker exec -it -u 0 taro_pytorch_classification-image bin/bash
 ```
