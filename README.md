@@ -47,23 +47,15 @@ cd /work
 1. `conf.txt`の`PORT=""`を書き換え
 2. `bash create-container.sh`を再実行するだけ
 
-## コンテナの終了方法と立ち上げ
-* 一度コンテナを抜ける場合は、ctrl+p のあと ctrl+q を押す（もしくはexitと入力しEnterを押す）
-* 再度コンテナに入るには、以下のコマンドを実行
-```
-docker attach taro_pytorch_classification-container
-```
-* 一度コンテナからexitした場合は、以下のコマンドで再開可能
-```
-docker start taro_pytorch_classification-container
-docker attach taro_pytorch_classification-container
-```
-
-* なお、rootでログインしたい場合は、次のコマンドを実行する。
-```
-docker exec -it -u 0 taro_pytorch_classification-image bin/bash
-```
-※ -image を指定する点に注意
+#### USE CASE3: 他人のイメージを使いまわして自分のコンテナを立ち上げたい場合
+`bash create-baseimage.sh`は実行済みであると仮定
+* 今のスクリプトは、イメージに自分のユーザーを割り当てている
+* したがって、他人が作ったイメージを使いまわして自分のコンテナを作る場合は、ユーザーの切り替えが必要
+* そうしなければ、ファイル操作が`permission denied`となる
+* Dockerは、ファイルの差分だけを保存してディスク容量を節約するので、ユーザーごとにイメージから作り直して、この作業はやらないという手もある
+1. `conf.txt`で`USER_SWITH=1`とする
+2. `bash create-container.sh`を再実行するだけ
+※ ターミナルの表示が若干おかしくなるので、もう少し他のやり方がないか調査中
 
 ## 注意事項
 * マウントするディレクトリが無指定の場合は、現在のディレクトリ（=**bashを実行したディレクトリ**)がマウントされます（スクリプトがあるディレクトリではないので注意してください）
@@ -74,3 +66,42 @@ docker exec -it -u 0 taro_pytorch_classification-image bin/bash
 
 ## TODO
 * attachなどのコマンドも、スクリプトで実行できるようにアップデートする予定
+* イメージにユーザーアカウントを紐付けているが、これをコンテナ立ち上げ時に紐付けできないか
+
+## チートシート: Dockerの使い方
+
+### コンテナからログアウトする(detach)
+* ctrl+p のあと ctrl+q を押す
+* この場合、バックグラウンドでコンテナが動作するため`docker ps`でコンテナ名が表示される
+
+### detachのあと、再度コンテナにログインする(attach)
+* 以下のコマンドを実行
+```
+docker attach taro_pytorch_classification-container
+```
+### コンテナを停止する(stop)
+* コンテナ内でexitを入力し、Enterを押す
+* もしくは、detach後に以下のコマンドを実行
+```
+docker stop taro_pytorch_classification-container
+```
+
+### stopのあと、再度コンテナを起動してログインする
+* 以下のコマンドを実行
+* stopすると`docker ps`ではコンテナ情報が表示されないため、どうしても確認したい場合は、`docker ps -a`とする
+```
+docker start taro_pytorch_classification-container
+docker attach taro_pytorch_classification-container
+```
+
+### コンテナの削除（共有マシン＆しばらく使わない場合は、削除するのがマナー）
+* 以下のコマンドを実行（コンテナIDは、`docker container ls -a`から確認可能）
+```
+docker rm コンテナID
+```
+
+### イメージの削除
+* 以下のコマンドを実行（イメージIDは、`docker image ls`から確認可能）
+```
+docker rm イメージID
+```
