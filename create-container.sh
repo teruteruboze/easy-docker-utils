@@ -26,5 +26,4 @@ else
 fi
 # =================================================
 CREATE_CONTAINER_COMMAND="docker run "$USER" "$BACKGROUND" -it "$USE_GPU" "$PORT" -v "$WORK_DIR":/work --name "$CONTAINER_NAME" "$BUILD_IMAGE_NAME""
-echo "$CREATE_CONTAINER_COMMAND"
 $CREATE_CONTAINER_COMMAND
