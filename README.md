@@ -7,7 +7,7 @@ git checkout -b hogehoge
 ```
 
 ## 使い方
-1. create-container.sh に必要事項を入力（以下は例）
+1. conf.txt に必要事項を入力（以下は例）
 ```
 BASE_IMAGE_NAME="pytorch/pytorch" # ベースとなるIMAGEの名前
 BASE_IMAGE_TAG="1.9.0-cuda10.2-cudnn7-runtime" # ベースとなるIMAGEのタグ
@@ -18,15 +18,20 @@ USE_GPU=1 # GPUありなら1、そうでなければ0
 PORT="8888" # ポートを使うならポート番号（使わないなら空欄）
 BACKGROUND=0 # バックグラウンド実行なら1、そうでなければ0
 ```
-※上記の部分以外は、書き換えないことを推奨
 
 2. requirements.txt にpipで入れたいフレームワーク名を記載（基本的にバージョンも指定するのがセオリーです）
 3. 必要であれば、Dockerfile を改修（例えば、pythonを入れるなど）
 4. このリポジトリのディレクトリで、以下のコマンドを実行
 ```
+bash create-baseimage.sh
+```
+一時的にカスタムのイメージを作ります</br>
+5. このリポジトリのディレクトリで、以下のコマンドを実行
+```
 bash create-container.sh
 ```
-これでコンテナが立ち上がり利用可能となります</br>
+カスタムで一時的に作ったイメージからコンテナを作るコマンドです</br>
+※コンテナを再度立ち上げる(ディレクトリを変えたい、ポート番号が別のコンテナを複製したいなどを含む)場合は、`bash create-container.sh`のみを実行すれば良いです</br>
 
 ## コンテナの終了方法と立ち上げ
 * 一度コンテナを抜ける場合は、ctrl+p のあと ctrl+q を押す（もしくはexitと入力しEnterを押す）
