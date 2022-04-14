@@ -1,7 +1,7 @@
-BASE_IMAGE_NAME="" # ベースとなるIMAGEの名前
-BASE_IMAGE_TAG="" # ベースとなるIMAGEのタグ
-BUILD_IMAGE_NAME="" # ビルドされるIMAGEの名前（ユニークなものをつける）
-CONTAINER_NAME=""
+BASE_IMAGE_NAME="pytorch/pytorch" # ベースとなるIMAGEの名前
+BASE_IMAGE_TAG="1.9.0-cuda10.2-cudnn7-runtime" # ベースとなるIMAGEのタグ
+BUILD_IMAGE_NAME="teruteruboze-pytorch_classification-image" # ビルドされるIMAGEの名前（ユニークなものをつける）
+CONTAINER_NAME="teruteruboze-pytorch_classification-container"
 WORK_DIR="" # マウントしたいディレクトリの絶対パス（なにも入力しない場合、今いるディレクトリをマウントします）
 USE_GPU=1 # GPUありなら1、そうでなければ0
 PORT="" # ポートを使うならポート番号（使わないなら空欄）
