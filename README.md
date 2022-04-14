@@ -7,6 +7,7 @@ git checkout -b hogehoge
 ```
 
 ## 使い方
+### 基本的な使い方
 1. conf.txt に必要事項を入力（以下は例）
 ```
 BASE_IMAGE_NAME="pytorch/pytorch" # ベースとなるIMAGEの名前
@@ -31,7 +32,20 @@ bash create-baseimage.sh
 bash create-container.sh
 ```
 カスタムで一時的に作ったイメージからコンテナを作るコマンドです</br>
-※コンテナを再度立ち上げる(ディレクトリを変えたい、ポート番号が別のコンテナを複製したいなどを含む)場合は、`bash create-container.sh`のみを実行すれば良いです</br>
+6. Docker内でマウントしたディレクトリにアクセスするには、下記のコマンドを実行する
+```
+cd /work
+```
+
+#### USE CASE1: マウントするディレクトリだけを変えて別のコンテナを立ち上げる場合
+`bash create-baseimage.sh`は実行済みであると仮定
+1. `conf.txt`の`WORK_DIR=""`を書き換え
+2. `bash create-container.sh`を再実行するだけ
+
+#### USE CASE2: 転送するポートだけを変えて別のコンテナを立ち上げる場合
+`bash create-baseimage.sh`は実行済みであると仮定
+1. `conf.txt`の`PORT=""`を書き換え
+2. `bash create-container.sh`を再実行するだけ
 
 ## コンテナの終了方法と立ち上げ
 * 一度コンテナを抜ける場合は、ctrl+p のあと ctrl+q を押す（もしくはexitと入力しEnterを押す）
@@ -51,8 +65,12 @@ docker exec -it -u 0 taro_pytorch_classification-image bin/bash
 ```
 ※ -image を指定する点に注意
 
+## 注意事項
+* マウントするディレクトリが無指定の場合は、現在のディレクトリ（=**bashを実行したディレクトリ**)がマウントされます（スクリプトがあるディレクトリではないので注意してください）
+* ベースイメージによっては、使い物にならないことがあります
+
+## ブランチと作成されるコンテナの環境
+* teruteruboze/lab-pytorch => Pytorch+CUDA10.2を使ったコンテナを立ち上げる場合のサンプルスクリプト
+
 ## TODO
 * attachなどのコマンドも、スクリプトで実行できるようにアップデートする予定
-
-## 注意事項
-* ベースイメージによっては、使い物にならないことがあります
