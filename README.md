@@ -103,5 +103,5 @@ docker rm コンテナID
 ### イメージの削除
 * 以下のコマンドを実行（イメージIDは、`docker image ls`から確認可能）
 ```
-docker rm イメージID
+docker rmi イメージID
 ```
