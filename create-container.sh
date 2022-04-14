@@ -4,7 +4,7 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 source ""$SCRIPT_DIR"/conf.txt"
 # =================================================
 if test "$WORK_DIR" = "" ; then
-  WORK_DIR=EXCUTE_DIR
+  WORK_DIR="$EXCUTE_DIR"
 fi
 if test $USE_GPU -eq 1 ; then
   USE_GPU="--gpus all"
