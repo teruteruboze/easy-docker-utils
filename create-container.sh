@@ -1,5 +1,5 @@
 #!/bin/bash
-SCRIPT_DIR=$(cd $(dirname $0); pwd)
+SCRIPT_DIR=`pwd -P`
 source ""$SCRIPT_DIR"/conf.txt"
 # =================================================
 if test "$WORK_DIR" = "" ; then
