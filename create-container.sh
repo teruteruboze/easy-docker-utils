@@ -19,7 +19,12 @@ if test $BACKGROUND -eq 1 ; then
 else
   BACKGROUND=""
 fi
+if test $USER_SWITH -eq 1 ; then
+  USER="-u `id -u`:`id -g`"
+else
+  USER=""
+fi
 # =================================================
-CREATE_CONTAINER_COMMAND="docker run "$BACKGROUND" -it "$USE_GPU" "$PORT" -v "$WORK_DIR":/work --name "$CONTAINER_NAME" "$BUILD_IMAGE_NAME""
+CREATE_CONTAINER_COMMAND="docker run "$USER" "$BACKGROUND" -it "$USE_GPU" "$PORT" -v "$WORK_DIR":/work --name "$CONTAINER_NAME" "$BUILD_IMAGE_NAME""
 echo "$CREATE_CONTAINER_COMMAND"
 $CREATE_CONTAINER_COMMAND
