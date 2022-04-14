@@ -26,7 +26,7 @@ else
   BACKGROUND=""
 fi
 # =================================================
-docker build -t "$BUILD_IMAGE_NAME" -f Dockerfile --build-arg IMAGE="$BASE_IMAGE_NAME" --build-arg TAG="$BASE_IMAGE_TAG" --build-arg UID=`id -u` .
+docker build . -t "$BUILD_IMAGE_NAME" -f Dockerfile --build-arg IMAGE="$BASE_IMAGE_NAME" --build-arg TAG="$BASE_IMAGE_TAG" --build-arg UID=`id -u`
 # =================================================
 CREATE_CONTAINER_COMMAND="docker run "$BACKGROUND" -it "$USE_GPU" "$PORT" -v "$WORK_DIR":/work --name "$CONTAINER_NAME" "$BUILD_IMAGE_NAME""
 $CREATE_CONTAINER_COMMAND
