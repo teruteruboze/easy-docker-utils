@@ -1,5 +1,6 @@
 #!/bin/bash
-source ./conf.txt
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+source ""$SCRIPT_DIR"/conf.txt"
 # =================================================
 if test "$WORK_DIR" = "" ; then
   WORK_DIR=`pwd`
@@ -19,4 +20,5 @@ else
 fi
 # =================================================
 CREATE_CONTAINER_COMMAND="docker run "$BACKGROUND" -it "$USE_GPU" "$PORT" -v "$WORK_DIR":/work --name "$CONTAINER_NAME" "$BUILD_IMAGE_NAME""
+echo "$CREATE_CONTAINER_COMMAND"
 $CREATE_CONTAINER_COMMAND
