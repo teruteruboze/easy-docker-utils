@@ -1,0 +1,8 @@
+BASE_IMAGE_NAME="" # ベースとなるIMAGEの名前
+BASE_IMAGE_TAG="" # ベースとなるIMAGEのタグ
+BUILD_IMAGE_NAME="" # ビルドされるIMAGEの名前（ユニークなものをつける）
+CONTAINER_NAME=""
+WORK_DIR="" # マウントしたいディレクトリの絶対パス（なにも入力しない場合、今いるディレクトリをマウントします）
+USE_GPU=1 # GPUありなら1、そうでなければ0
+PORT="" # ポートを使うならポート番号（使わないなら空欄）
+BACKGROUND=0 # バックグラウンド実行なら1、そうでなければ0
