@@ -1,7 +1,7 @@
-BASE_IMAGE_NAME="" # ベースとなるIMAGEの名前
-BASE_IMAGE_TAG="" # ベースとなるIMAGEのタグ
-BUILD_IMAGE_NAME="" # ビルドされるIMAGEの名前（ユニークなものをつける）
-CONTAINER_NAME=""
+BASE_IMAGE_NAME="docker pull continuumio/anaconda3" # ベースとなるIMAGEの名前
+BASE_IMAGE_TAG="2021.04" # ベースとなるIMAGEのタグ
+BUILD_IMAGE_NAME="teruteruboze-pytorch-conda-image" # ビルドされるIMAGEの名前（ユニークなものをつける）
+CONTAINER_NAME="teruteruboze-pytorch-conda-container"
 WORK_DIR="" # マウントしたいディレクトリの絶対パス（なにも入力しない場合、今いるディレクトリをマウントします）# /work にマウントします
 WORK_DIR_2nd="" # ２つめのディレクトリ（なければ空欄に）# /work_sub にマウントします
 WORK_DIR_3rd="" # ３つめのディレクトリ（なければ空欄に）# /work_3rd にマウントします
