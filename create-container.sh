@@ -31,5 +31,5 @@ else
   USER=""
 fi
 # =================================================
-CREATE_CONTAINER_COMMAND="docker run "$USER" "$BACKGROUND" -it "$USE_GPU" "$PORT" -v "$WORK_DIR":/work "$WORK_DIR_2nd" "$WORK_DIR_3rd" --name "$CONTAINER_NAME" "$BUILD_IMAGE_NAME""
+CREATE_CONTAINER_COMMAND="docker run --ipc=host "$USER" "$BACKGROUND" -it "$USE_GPU" "$PORT" -v "$WORK_DIR":/work "$WORK_DIR_2nd" "$WORK_DIR_3rd" --name "$CONTAINER_NAME" "$BUILD_IMAGE_NAME""
 $CREATE_CONTAINER_COMMAND
