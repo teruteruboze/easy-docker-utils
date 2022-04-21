@@ -23,6 +23,8 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
+RUN wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
+
 ARG UID
 RUN useradd docker -l -u ${UID} -s /bin/bash -m
 USER docker

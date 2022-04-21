@@ -1,11 +1,11 @@
-BASE_IMAGE_NAME="docker pull continuumio/anaconda3" # ベースとなるIMAGEの名前
-BASE_IMAGE_TAG="2021.04" # ベースとなるIMAGEのタグ
+BASE_IMAGE_NAME="pytorch/pytorch" # ベースとなるIMAGEの名前
+BASE_IMAGE_TAG="1.9.0-cuda10.2-cudnn7-devel" # ベースとなるIMAGEのタグ
 BUILD_IMAGE_NAME="teruteruboze-pytorch-conda-image" # ビルドされるIMAGEの名前（ユニークなものをつける）
 CONTAINER_NAME="teruteruboze-pytorch-conda-container"
 WORK_DIR="" # マウントしたいディレクトリの絶対パス（なにも入力しない場合、今いるディレクトリをマウントします）# /work にマウントします
 WORK_DIR_2nd="" # ２つめのディレクトリ（なければ空欄に）# /work_sub にマウントします
 WORK_DIR_3rd="" # ３つめのディレクトリ（なければ空欄に）# /work_3rd にマウントします
 USE_GPU=1 # GPUありなら1、そうでなければ0
-PORT="" # ポートを使うならポート番号（使わないなら空欄）
+PORT="8889" # ポートを使うならポート番号（使わないなら空欄）
 BACKGROUND=0 # バックグラウンド実行なら1、そうでなければ0
 USER_SWITH=0 # イメージの作成者とコンテナの立ち上げるユーザーアカウントが違う場合は1（基本的には0）
