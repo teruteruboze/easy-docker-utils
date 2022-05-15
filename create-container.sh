@@ -7,7 +7,7 @@ if test "$WORK_DIR" = "" ; then
   WORK_DIR="$EXCUTE_DIR"
 fi
 if test "$WORK_DIR_2nd" != "" ; then
-  WORK_DIR_2nd="-v $WORK_DIR_2nd:/work_sub"
+  WORK_DIR_2nd="-v $WORK_DIR_2nd:/var/www/html"
 fi
 if test "$WORK_DIR_3rd" != "" ; then
   WORK_DIR_3rd="-v $WORK_DIR_3rd:/work_3rd"
@@ -18,7 +18,7 @@ else
   USE_GPU=""
 fi
 if test "$PORT" != "" ; then
-  PORT="-p "$PORT":8888"
+  PORT="-p "$PORT":80"
 fi
 if test $BACKGROUND -eq 1 ; then
   BACKGROUND="-d"
@@ -31,5 +31,5 @@ else
   USER=""
 fi
 # =================================================
-CREATE_CONTAINER_COMMAND="docker run --ipc=host "$USER" "$BACKGROUND" -it "$USE_GPU" "$PORT" -v "$WORK_DIR":/work "$WORK_DIR_2nd" "$WORK_DIR_3rd" --name "$CONTAINER_NAME" "$BUILD_IMAGE_NAME""
+CREATE_CONTAINER_COMMAND="docker run --ipc=host "$USER" "$BACKGROUND" -it "$USE_GPU" "$PORT" -v "$WORK_DIR":/work "$WORK_DIR_2nd" "$WORK_DIR_3rd" --name "$CONTAINER_NAME" "$BUILD_IMAGE_NAME" -D FOREGROUND"
 $CREATE_CONTAINER_COMMAND
