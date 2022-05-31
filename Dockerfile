@@ -18,6 +18,7 @@ RUN apt-get update \
     vim \
     emacs \
     python3.8 \
+    python3-pip \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
