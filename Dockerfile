@@ -43,6 +43,10 @@ RUN pip install --upgrade pip
 RUN pip install Cython
 RUN pip install --upgrade Cython
 RUN pip install notebook
+RUN pip install jupyter
+RUN pip install pyzmq --upgrade
+RUN pip install ipykernel --upgrade
+RUN pip install traitlets --upgrade
 RUN pip install -r /requirements.txt
 
 ARG UID
