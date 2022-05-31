@@ -2,6 +2,9 @@ ARG IMAGE
 ARG TAG
 FROM ${IMAGE}:${TAG}
 
+ENV TZ=Asia/Tokyo \
+    DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y \
