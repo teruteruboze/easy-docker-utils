@@ -1,5 +1,5 @@
-BASE_IMAGE_NAME="pytorch/pytorch" # ベースとなるIMAGEの名前
-BASE_IMAGE_TAG="1.9.0-cuda10.2-cudnn7-devel" # ベースとなるIMAGEのタグ
+BASE_IMAGE_NAME="continuumio/anaconda3" # ベースとなるIMAGEの名前
+BASE_IMAGE_TAG="2021.04" # ベースとなるIMAGEのタグ
 BUILD_IMAGE_NAME="teruteruboze-pytorch-conda-image" # ビルドされるIMAGEの名前（ユニークなものをつける）
 CONTAINER_NAME="teruteruboze-pytorch-conda-container"
 WORK_DIR="" # マウントしたいディレクトリの絶対パス（なにも入力しない場合、今いるディレクトリをマウントします）# /work にマウントします
