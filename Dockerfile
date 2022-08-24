@@ -3,7 +3,7 @@ ARG TAG
 FROM ${IMAGE}:${TAG}
 
 RUN apt-get update \
-    && apt-get upgrade -y \
+    && apt-get upgrade -y --allow-unauthenticated \
     && apt-get install -y \
     make \
     wget \
