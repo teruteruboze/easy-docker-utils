@@ -17,10 +17,6 @@ RUN apt-get update \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-    
-RUN pip install --upgrade pip
-COPY ./requirements.txt /requirements.txt
-RUN pip install -r /requirements.txt
 
 ARG UID
 RUN useradd docker -l -u ${UID} -s /bin/bash -m
