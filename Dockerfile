@@ -2,8 +2,12 @@ ARG IMAGE
 ARG TAG
 FROM ${IMAGE}:${TAG}
 
+RUN apt-key del 7fa2af80
+RUN apt-key del 3bf863cc
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
 RUN apt-get update \
-    && apt-get upgrade -y \
+    && apt-get upgrade -y --allow-unauthenticated \
     && apt-get install -y \
     make \
     wget \
