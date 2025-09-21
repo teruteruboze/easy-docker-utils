@@ -17,7 +17,7 @@ RUN apt-get update \
     git \
     vim \
     emacs \
-    python3.8-dev \
+    python3.10-dev \
     python3-pip \
     gfortran \ 
     libopenblas-dev \
@@ -26,13 +26,15 @@ RUN apt-get update \
     autoconf \
     libtool \
     pkg-config \
-    python-opengl \
-    python-pil \
-    python-pyrex \
+    python3-opengl \
+    python3-pil \
     idle-python2.7 \
     libgle3 \
     libssl-dev \
     libfreetype6-dev \
+    libpq-dev \
+    postgresql \
+    postgresql-contrib \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
